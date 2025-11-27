@@ -1,7 +1,7 @@
 // Configuración de EmailJS
 const EMAIL_CONFIG = {
     serviceId: 'service_5i394rd',
-    templateId: 'template_pk4g5bc',
+    templateId: 'template_f2qjy0e',
     publicKey: 'dCQKS6ZGwA3CpfMmG',
     destinatario: 'josuecotzojay305@gmail.com'
 };
