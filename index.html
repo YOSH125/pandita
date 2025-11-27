@@ -3,103 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flores Mágicas para Lucy ✨</title>
-    <link rel="stylesheet" href="main.css">
+    <title>Control de Deudas - Plan de Pago</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
 </head>
-<body class="container">
-    <!-- Cielo nocturno -->
-    <div class="night-sky"></div>
-    
-    <!-- Estrellas de fondo -->
-    <div class="stars"></div>
-    
-    <!-- Título mágico -->
-    <div class="magical-title">
-        <h1>✨ Flores ✨</h1>
-        <p>Creados especialmente para</p>
-        <div class="lucy-name">Sarahi</div>
-    </div>
-    
-    <!-- Partículas mágicas -->
-    <div class="magic-particles"></div>
-    
-    <!-- Luces ambientales -->
-    <div class="ambient-lights"></div>
-    
-   ]
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Control de Deudas</h1>
+            <p class="fecha-actual" id="fecha-actual">Cargando fecha...</p>
+        </header>
 
-    <!-- Jardín mágico -->
-    <div class="magical-garden">
-        <!-- Flor 1 -->
-        <div class="flower flower--1">
-            <div class="flower__leafs flower__leafs--1">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-                
-                <!-- Luces mágicas -->
-                <div class="flower__light" style="left: -2vmin; animation-delay: 1s;"></div>
-                <div class="flower__light" style="left: 3vmin; animation-delay: 0.5s;"></div>
-                <div class="flower__light" style="left: -6vmin; animation-delay: 0.3s;"></div>
-                <div class="flower__light" style="left: 6vmin; animation-delay: 0.9s;"></div>
-                <div class="flower__light" style="left: -1vmin; animation-delay: 1.5s;"></div>
-                <div class="flower__light" style="left: -4vmin; animation-delay: 3s;"></div>
-                <div class="flower__light" style="left: 3vmin; animation-delay: 2s;"></div>
-                <div class="flower__light" style="left: -6vmin; animation-delay: 3.5s;"></div>
-            </div>
-            <div class="flower__line"></div>
+        <!-- Recordatorio motivacional -->
+        <div class="recordatorio-box" id="recordatorio">
+            <span class="icono">🚫</span>
+            <p id="mensaje-recordatorio">Cargando mensaje...</p>
         </div>
-        
-        <!-- Flor 2 -->
-        <div class="flower flower--2">
-            <div class="flower__leafs flower__leafs--2">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-                
-                <!-- Luces mágicas -->
-                <div class="flower__light" style="left: -2vmin; animation-delay: 1.2s;"></div>
-                <div class="flower__light" style="left: 3vmin; animation-delay: 0.7s;"></div>
-                <div class="flower__light" style="left: -5vmin; animation-delay: 0.5s;"></div>
-                <div class="flower__light" style="left: 5vmin; animation-delay: 1.1s;"></div>
-                <div class="flower__light" style="left: -1vmin; animation-delay: 1.7s;"></div>
-                <div class="flower__light" style="left: -3vmin; animation-delay: 3.2s;"></div>
-                <div class="flower__light" style="left: 4vmin; animation-delay: 2.2s;"></div>
-                <div class="flower__light" style="left: -5vmin; animation-delay: 3.7s;"></div>
+
+        <!-- Progreso general -->
+        <section class="seccion progreso-general">
+            <h2>Progreso Total</h2>
+            <div class="deuda-total">
+                <div class="deuda-info">
+                    <span class="label">Deuda inicial:</span>
+                    <span class="valor">Q13,000</span>
+                </div>
+                <div class="deuda-info destacado">
+                    <span class="label">Deuda actual:</span>
+                    <span class="valor" id="deuda-actual">Q13,000</span>
+                </div>
+                <div class="deuda-info success">
+                    <span class="label">Pagado:</span>
+                    <span class="valor" id="total-pagado">Q0</span>
+                </div>
             </div>
-            <div class="flower__line"></div>
-        </div>
-        
-        <!-- Flor 3 -->
-        <div class="flower flower--3">
-            <div class="flower__leafs flower__leafs--3">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-                
-                <!-- Luces mágicas -->
-                <div class="flower__light" style="left: -3vmin; animation-delay: 1.4s;"></div>
-                <div class="flower__light" style="left: 2vmin; animation-delay: 0.9s;"></div>
-                <div class="flower__light" style="left: -7vmin; animation-delay: 0.7s;"></div>
-                <div class="flower__light" style="left: 7vmin; animation-delay: 1.3s;"></div>
-                <div class="flower__light" style="left: 0vmin; animation-delay: 1.9s;"></div>
-                <div class="flower__light" style="left: -5vmin; animation-delay: 3.4s;"></div>
-                <div class="flower__light" style="left: 5vmin; animation-delay: 2.4s;"></div>
-                <div class="flower__light" style="left: -4vmin; animation-delay: 3.9s;"></div>
+            <div class="barra-progreso-container">
+                <div class="barra-progreso">
+                    <div class="barra-progreso-fill" id="barra-progreso"></div>
+                </div>
+                <span class="porcentaje" id="porcentaje-progreso">0%</span>
             </div>
-            <div class="flower__line"></div>
-        </div>
+        </section>
+
+        <!-- Deudas individuales -->
+        <section class="seccion deudas-individuales">
+            <h2>Deudas por Tipo</h2>
+            <div class="cards-deudas">
+                <div class="card-deuda tarjeta">
+                    <div class="card-header">
+                        <span class="icono-card">💳</span>
+                        <h3>Tarjeta de Crédito</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="monto-inicial">Inicial: Q8,000</div>
+                        <div class="monto-actual" id="deuda-tarjeta">Q8,000</div>
+                        <div class="barra-mini">
+                            <div class="barra-mini-fill" id="barra-tarjeta"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-deuda externa">
+                    <div class="card-header">
+                        <span class="icono-card">🤝</span>
+                        <h3>Deuda Externa</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="monto-inicial">Inicial: Q5,000</div>
+                        <div class="monto-actual" id="deuda-externa">Q5,000</div>
+                        <div class="barra-mini">
+                            <div class="barra-mini-fill" id="barra-externa"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline de pagos -->
+        <section class="seccion timeline-section">
+            <h2>Plan de Pagos</h2>
+            <div class="timeline">
+                <!-- Fase 1 -->
+                <div class="fase" id="fase-1" data-fecha="2024-11-29">
+                    <div class="fase-marker">1</div>
+                    <div class="fase-content">
+                        <div class="fase-header">
+                            <h3>Fin de Noviembre</h3>
+                            <span class="fase-fecha">29 Nov</span>
+                        </div>
+                        <div class="fase-detalles">
+                            <p><strong>Ingreso:</strong> Q3,500</p>
+                            <ul>
+                                <li>Q2,500 → Deuda externa</li>
+                                <li>Q1,000 → Tarjeta</li>
+                            </ul>
+                            <div class="fase-resultado">
+                                <span>Externa: Q2,500</span>
+                                <span>Tarjeta: Q7,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fase 2 -->
+                <div class="fase" id="fase-2" data-fecha="2024-12-15">
+                    <div class="fase-marker">2</div>
+                    <div class="fase-content">
+                        <div class="fase-header">
+                            <h3>Primera Quincena Diciembre</h3>
+                            <span class="fase-fecha">15 Dic</span>
+                        </div>
+                        <div class="fase-detalles">
+                            <p><strong>Ingreso:</strong> Q7,000 (sueldo + aguinaldo)</p>
+                            <p><strong>Gastos:</strong> Q1,600</p>
+                            <p><strong>Disponible:</strong> Q5,400</p>
+                            <ul>
+                                <li>Q2,500 → Deuda externa (LIQUIDADA)</li>
+                                <li>Q2,900 → Tarjeta</li>
+                            </ul>
+                            <div class="fase-resultado">
+                                <span class="liquidado">Externa: Q0 ✓</span>
+                                <span>Tarjeta: Q4,100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fase 3 -->
+                <div class="fase" id="fase-3" data-fecha="2024-12-31">
+                    <div class="fase-marker">3</div>
+                    <div class="fase-content">
+                        <div class="fase-header">
+                            <h3>Segunda Quincena Diciembre</h3>
+                            <span class="fase-fecha">31 Dic</span>
+                        </div>
+                        <div class="fase-detalles">
+                            <p><strong>Ingreso:</strong> Q3,500</p>
+                            <p><strong>Gastos:</strong> Q1,100</p>
+                            <p><strong>Disponible:</strong> Q2,400</p>
+                            <ul>
+                                <li>Q2,400 → Tarjeta</li>
+                            </ul>
+                            <div class="fase-resultado">
+                                <span>Tarjeta: Q1,700</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fase 4 -->
+                <div class="fase" id="fase-4" data-fecha="2025-01-15">
+                    <div class="fase-marker">4</div>
+                    <div class="fase-content">
+                        <div class="fase-header">
+                            <h3>Primera Quincena Enero</h3>
+                            <span class="fase-fecha">15 Ene</span>
+                        </div>
+                        <div class="fase-detalles">
+                            <p><strong>Ingreso:</strong> Q3,500</p>
+                            <p><strong>Gastos:</strong> Q1,600</p>
+                            <p><strong>Disponible:</strong> Q1,900</p>
+                            <ul>
+                                <li>Q1,700 → Tarjeta (LIQUIDADA)</li>
+                            </ul>
+                            <div class="fase-resultado success-final">
+                                <span class="liquidado">DEUDA TOTAL: Q0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Próximo pago -->
+        <section class="seccion proximo-pago" id="proximo-pago-section">
+            <h2>Próximo Pago</h2>
+            <div class="proximo-pago-card">
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="numero" id="dias">--</span>
+                        <span class="label">días</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="numero" id="horas">--</span>
+                        <span class="label">horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="numero" id="minutos">--</span>
+                        <span class="label">min</span>
+                    </div>
+                </div>
+                <div class="proximo-info">
+                    <p id="proximo-fase">Cargando...</p>
+                    <p id="proximo-monto" class="monto-proximo">Q0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resumen financiero -->
+        <section class="seccion resumen">
+            <h2>Datos Financieros</h2>
+            <div class="resumen-grid">
+                <div class="resumen-item">
+                    <span class="resumen-label">Sueldo mensual</span>
+                    <span class="resumen-valor">Q7,000</span>
+                </div>
+                <div class="resumen-item">
+                    <span class="resumen-label">Por quincena</span>
+                    <span class="resumen-valor">Q3,500</span>
+                </div>
+                <div class="resumen-item">
+                    <span class="resumen-label">Gastos fijos/quincena</span>
+                    <span class="resumen-valor">Q1,100</span>
+                </div>
+                <div class="resumen-item">
+                    <span class="resumen-label">Gasto mensual extra</span>
+                    <span class="resumen-valor">Q500</span>
+                </div>
+                <div class="resumen-item destacado">
+                    <span class="resumen-label">Libre después de deudas</span>
+                    <span class="resumen-valor">Q2,700/mes</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meta final -->
+        <section class="seccion meta-final">
+            <div class="meta-content">
+                <span class="meta-icono">🎯</span>
+                <h2>Meta: Libre de deudas</h2>
+                <p class="meta-fecha">15 de Enero 2026</p>
+                <p class="meta-mensaje">A partir de febrero tendrás Q2,700 libres mensuales</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Mantente enfocado. Cada quetzal cuenta.</p>
+        </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
