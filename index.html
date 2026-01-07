@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control de Deudas - Plan de Pago</title>
+    <title>Control de Peso - Plan de Fitness</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,31 +13,31 @@
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <h1>Control de Deudas - Plan de Pago</h1>
+            <h1>Control de Peso - Plan de Fitness</h1>
             <p class="fecha-actual" id="fecha-actual">Cargando fecha...</p>
         </header>
 
         <!-- Recordatorio motivacional -->
         <div class="recordatorio-box" id="recordatorio">
-            <span class="icono">🚫</span>
+            <span class="icono">💪</span>
             <p id="mensaje-recordatorio">Cargando mensaje...</p>
         </div>
 
         <!-- Progreso general -->
         <section class="seccion progreso-general">
-            <h2>Progreso Total</h2>
-            <div class="deuda-total">
-                <div class="deuda-info">
-                    <span class="label">Deuda inicial:</span>
-                    <span class="valor">Q13,000</span>
+            <h2>Progreso de Peso</h2>
+            <div class="peso-total">
+                <div class="peso-info">
+                    <span class="label">Peso inicial:</span>
+                    <span class="valor">97 kg</span>
                 </div>
-                <div class="deuda-info destacado">
-                    <span class="label">Deuda actual:</span>
-                    <span class="valor" id="deuda-actual">Q13,000</span>
+                <div class="peso-info destacado">
+                    <span class="label">Peso actual:</span>
+                    <span class="valor" id="peso-actual">97 kg</span>
                 </div>
-                <div class="deuda-info success">
-                    <span class="label">Pagado:</span>
-                    <span class="valor" id="total-pagado">Q0</span>
+                <div class="peso-info success">
+                    <span class="label">Perdido:</span>
+                    <span class="valor" id="peso-perdido">0 kg</span>
                 </div>
             </div>
             <div class="barra-progreso-container">
@@ -46,146 +46,190 @@
                 </div>
                 <span class="porcentaje" id="porcentaje-progreso">0%</span>
             </div>
+            <div class="meta-peso">
+                <span>Meta: <strong>77-79 kg (170-175 lb)</strong></span>
+            </div>
         </section>
 
-        <!-- Deudas individuales -->
-        <section class="seccion deudas-individuales">
-            <h2>Deudas por Tipo</h2>
-            <div class="cards-deudas">
-                <div class="card-deuda tarjeta">
-                    <div class="card-header">
-                        <span class="icono-card">💳</span>
-                        <h3>Tarjeta de Crédito</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="monto-inicial">Inicial: Q8,000</div>
-                        <div class="monto-actual" id="deuda-tarjeta">Q8,000</div>
-                        <div class="barra-mini">
-                            <div class="barra-mini-fill" id="barra-tarjeta"></div>
-                        </div>
+        <!-- Datos personales -->
+        <section class="seccion datos-personales">
+            <h2>Datos Personales</h2>
+            <div class="datos-grid">
+                <div class="dato-item">
+                    <span class="dato-label">Peso inicial</span>
+                    <span class="dato-valor">97 kg (215 lb)</span>
+                </div>
+                <div class="dato-item">
+                    <span class="dato-label">Estatura</span>
+                    <span class="dato-valor">1.70 m</span>
+                </div>
+                <div class="dato-item">
+                    <span class="dato-label">IMC actual</span>
+                    <span class="dato-valor" id="imc-actual">33.6</span>
+                </div>
+                <div class="dato-item destacado">
+                    <span class="dato-label">Meta de peso</span>
+                    <span class="dato-valor">77-79 kg</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Entrenamiento del dia -->
+        <section class="seccion entrenamiento-hoy">
+            <h2>Entrenamiento de Hoy</h2>
+            <div class="entrenamiento-card" id="entrenamiento-card">
+                <div class="entrenamiento-header">
+                    <span class="dia-nombre" id="dia-nombre">Cargando...</span>
+                    <span class="entrenamiento-tipo" id="entrenamiento-tipo">--</span>
+                </div>
+                <div class="entrenamiento-body">
+                    <div class="entrenamiento-icono" id="entrenamiento-icono">🏃</div>
+                    <div class="entrenamiento-detalle" id="entrenamiento-detalle">Cargando...</div>
+                    <div class="calorias-dia">
+                        <span class="calorias-label">Calorias objetivo:</span>
+                        <span class="calorias-valor" id="calorias-dia">-- kcal</span>
                     </div>
                 </div>
-                <div class="card-deuda externa">
-                    <div class="card-header">
-                        <span class="icono-card">🤝</span>
-                        <h3>Deuda Externa</h3>
+                <div class="horario-entrenamiento">
+                    <span>Horario: <strong>5:45 - 6:30 am</strong></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plan semanal -->
+        <section class="seccion plan-semanal">
+            <h2>Plan Semanal</h2>
+            <div class="semana-grid">
+                <div class="dia-card" id="dia-lunes">
+                    <div class="dia-header">
+                        <span class="dia-numero">L</span>
+                        <span class="dia-texto">Lunes</span>
                     </div>
-                    <div class="card-body">
-                        <div class="monto-inicial">Inicial: Q5,000</div>
-                        <div class="monto-actual" id="deuda-externa">Q5,000</div>
-                        <div class="barra-mini">
-                            <div class="barra-mini-fill" id="barra-externa"></div>
-                        </div>
+                    <div class="dia-body">
+                        <span class="actividad-icono">🏃</span>
+                        <span class="actividad-nombre">Correr 6K</span>
+                        <span class="actividad-calorias">2,200-2,300 kcal</span>
+                    </div>
+                </div>
+                <div class="dia-card" id="dia-martes">
+                    <div class="dia-header">
+                        <span class="dia-numero">M</span>
+                        <span class="dia-texto">Martes</span>
+                    </div>
+                    <div class="dia-body">
+                        <span class="actividad-icono">🏋️</span>
+                        <span class="actividad-nombre">Fuerza + Iglesia</span>
+                        <span class="actividad-calorias">1,900-2,000 kcal</span>
+                    </div>
+                </div>
+                <div class="dia-card" id="dia-miercoles">
+                    <div class="dia-header">
+                        <span class="dia-numero">X</span>
+                        <span class="dia-texto">Miercoles</span>
+                    </div>
+                    <div class="dia-body">
+                        <span class="actividad-icono">🏃</span>
+                        <span class="actividad-nombre">Correr 5-6K + Banda</span>
+                        <span class="actividad-calorias">2,200 kcal</span>
+                    </div>
+                </div>
+                <div class="dia-card" id="dia-jueves">
+                    <div class="dia-header">
+                        <span class="dia-numero">J</span>
+                        <span class="dia-texto">Jueves</span>
+                    </div>
+                    <div class="dia-body">
+                        <span class="actividad-icono">🏀</span>
+                        <span class="actividad-nombre">Basquet + Iglesia</span>
+                        <span class="actividad-calorias">2,200 kcal</span>
+                    </div>
+                </div>
+                <div class="dia-card" id="dia-viernes">
+                    <div class="dia-header">
+                        <span class="dia-numero">V</span>
+                        <span class="dia-texto">Viernes</span>
+                    </div>
+                    <div class="dia-body">
+                        <span class="actividad-icono">🏋️</span>
+                        <span class="actividad-nombre">Fuerza en casa</span>
+                        <span class="actividad-calorias">1,900-2,000 kcal</span>
+                    </div>
+                </div>
+                <div class="dia-card" id="dia-sabado">
+                    <div class="dia-header">
+                        <span class="dia-numero">S</span>
+                        <span class="dia-texto">Sabado</span>
+                    </div>
+                    <div class="dia-body">
+                        <span class="actividad-icono">🏃</span>
+                        <span class="actividad-nombre">Cardio suave / Basquet</span>
+                        <span class="actividad-calorias">~2,100 kcal</span>
+                    </div>
+                </div>
+                <div class="dia-card" id="dia-domingo">
+                    <div class="dia-header">
+                        <span class="dia-numero">D</span>
+                        <span class="dia-texto">Domingo</span>
+                    </div>
+                    <div class="dia-body">
+                        <span class="actividad-icono">🏊</span>
+                        <span class="actividad-nombre">Iglesia + Natacion/Descanso</span>
+                        <span class="actividad-calorias">1,900-2,000 kcal</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Timeline de pagos -->
-        <section class="seccion timeline-section">
-            <h2>Plan de Pagos</h2>
-            <div class="timeline">
-                <!-- Fase 1 -->
-                <div class="fase" id="fase-1" data-fecha="2024-11-29">
-                    <div class="fase-marker">1</div>
-                    <div class="fase-content">
-                        <div class="fase-header">
-                            <h3>Fin de Noviembre</h3>
-                            <span class="fase-fecha">29 Nov</span>
-                        </div>
-                        <div class="fase-detalles">
-                            <p><strong>Ingreso:</strong> Q3,500</p>
-                            <ul>
-                                <li>Q2,500 → Deuda externa</li>
-                                <li>Q1,000 → Tarjeta</li>
-                            </ul>
-                            <div class="fase-resultado">
-                                <span>Externa: Q2,500</span>
-                                <span>Tarjeta: Q7,000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Horario del dia -->
+        <section class="seccion horario-base">
+            <h2 id="horario-titulo">Horario de Hoy</h2>
+            <div class="horario-timeline" id="horario-timeline">
+                <!-- Se genera dinamicamente con JavaScript -->
+            </div>
+        </section>
 
-                <!-- Fase 2 -->
-                <div class="fase" id="fase-2" data-fecha="2024-12-15">
-                    <div class="fase-marker">2</div>
-                    <div class="fase-content">
-                        <div class="fase-header">
-                            <h3>Primera Quincena Diciembre</h3>
-                            <span class="fase-fecha">15 Dic</span>
-                        </div>
-                        <div class="fase-detalles">
-                            <p><strong>Ingreso:</strong> Q7,000 (sueldo + aguinaldo)</p>
-                            <p><strong>Gastos:</strong> Q1,600</p>
-                            <p><strong>Disponible:</strong> Q5,400</p>
-                            <ul>
-                                <li>Q2,500 → Deuda externa (LIQUIDADA)</li>
-                                <li>Q2,900 → Tarjeta</li>
-                            </ul>
-                            <div class="fase-resultado">
-                                <span class="liquidado">Externa: Q0 ✓</span>
-                                <span>Tarjeta: Q4,100</span>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Rutina de fuerza -->
+        <section class="seccion rutina-fuerza">
+            <h2>Rutina de Fuerza (30-40 min)</h2>
+            <div class="ejercicios-grid">
+                <div class="ejercicio-item">
+                    <span class="ejercicio-icono">🦵</span>
+                    <span class="ejercicio-nombre">Sentadillas</span>
+                    <span class="ejercicio-reps">20 reps</span>
                 </div>
-
-                <!-- Fase 3 -->
-                <div class="fase" id="fase-3" data-fecha="2024-12-31">
-                    <div class="fase-marker">3</div>
-                    <div class="fase-content">
-                        <div class="fase-header">
-                            <h3>Segunda Quincena Diciembre</h3>
-                            <span class="fase-fecha">31 Dic</span>
-                        </div>
-                        <div class="fase-detalles">
-                            <p><strong>Ingreso:</strong> Q3,500</p>
-                            <p><strong>Gastos:</strong> Q1,100</p>
-                            <p><strong>Disponible:</strong> Q2,400</p>
-                            <ul>
-                                <li>Q2,400 → Tarjeta</li>
-                            </ul>
-                            <div class="fase-resultado">
-                                <span>Tarjeta: Q1,700</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="ejercicio-item">
+                    <span class="ejercicio-icono">💪</span>
+                    <span class="ejercicio-nombre">Lagartijas</span>
+                    <span class="ejercicio-reps">10-15 reps</span>
                 </div>
-
-                <!-- Fase 4 -->
-                <div class="fase" id="fase-4" data-fecha="2025-01-15">
-                    <div class="fase-marker">4</div>
-                    <div class="fase-content">
-                        <div class="fase-header">
-                            <h3>Primera Quincena Enero</h3>
-                            <span class="fase-fecha">15 Ene</span>
-                        </div>
-                        <div class="fase-detalles">
-                            <p><strong>Ingreso:</strong> Q3,500</p>
-                            <p><strong>Gastos:</strong> Q1,600</p>
-                            <p><strong>Disponible:</strong> Q1,900</p>
-                            <ul>
-                                <li>Q1,700 → Tarjeta (LIQUIDADA)</li>
-                            </ul>
-                            <div class="fase-resultado success-final">
-                                <span class="liquidado">DEUDA TOTAL: Q0</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="ejercicio-item">
+                    <span class="ejercicio-icono">🚶</span>
+                    <span class="ejercicio-nombre">Zancadas</span>
+                    <span class="ejercicio-reps">10 por pierna</span>
+                </div>
+                <div class="ejercicio-item">
+                    <span class="ejercicio-icono">🧘</span>
+                    <span class="ejercicio-nombre">Plancha</span>
+                    <span class="ejercicio-reps">40 segundos</span>
+                </div>
+                <div class="ejercicio-item">
+                    <span class="ejercicio-icono">⭐</span>
+                    <span class="ejercicio-nombre">Jumping Jacks</span>
+                    <span class="ejercicio-reps">60 segundos</span>
+                </div>
+                <div class="ejercicio-item rondas">
+                    <span class="ejercicio-icono">🔄</span>
+                    <span class="ejercicio-nombre">Total</span>
+                    <span class="ejercicio-reps">3-4 rondas</span>
                 </div>
             </div>
         </section>
 
-        <!-- Próximo pago -->
-        <section class="seccion proximo-pago" id="proximo-pago-section">
-            <h2>Próximo Pago</h2>
-            <div class="proximo-pago-card">
+        <!-- Proximo entrenamiento countdown -->
+        <section class="seccion proximo-entreno" id="proximo-entreno-section">
+            <h2>Proximo Entrenamiento</h2>
+            <div class="proximo-entreno-card">
                 <div class="countdown" id="countdown">
-                    <div class="countdown-item">
-                        <span class="numero" id="dias">--</span>
-                        <span class="label">días</span>
-                    </div>
                     <div class="countdown-item">
                         <span class="numero" id="horas">--</span>
                         <span class="label">horas</span>
@@ -196,35 +240,64 @@
                     </div>
                 </div>
                 <div class="proximo-info">
-                    <p id="proximo-fase">Cargando...</p>
-                    <p id="proximo-monto" class="monto-proximo">Q0</p>
+                    <p id="proximo-entreno-nombre">Cargando...</p>
+                    <p id="proximo-entreno-hora" class="hora-proximo">5:45 am</p>
                 </div>
             </div>
         </section>
 
-        <!-- Resumen financiero -->
-        <section class="seccion resumen">
-            <h2>Datos Financieros</h2>
-            <div class="resumen-grid">
-                <div class="resumen-item">
-                    <span class="resumen-label">Sueldo mensual</span>
-                    <span class="resumen-valor">Q7,000</span>
+        <!-- Resultados esperados -->
+        <section class="seccion resultados-esperados">
+            <h2>Resultados Esperados</h2>
+            <div class="resultados-timeline">
+                <div class="resultado-fase" id="resultado-mes1">
+                    <div class="resultado-marker">1</div>
+                    <div class="resultado-content">
+                        <h3>Mes 1</h3>
+                        <p class="resultado-perdida">-5 a -7 kg</p>
+                        <p class="resultado-peso">~90-92 kg</p>
+                    </div>
                 </div>
-                <div class="resumen-item">
-                    <span class="resumen-label">Por quincena</span>
-                    <span class="resumen-valor">Q3,500</span>
+                <div class="resultado-fase" id="resultado-mes2">
+                    <div class="resultado-marker">2-3</div>
+                    <div class="resultado-content">
+                        <h3>Mes 2-3</h3>
+                        <p class="resultado-perdida">-4 a -5 kg</p>
+                        <p class="resultado-peso">~85-88 kg</p>
+                    </div>
                 </div>
-                <div class="resumen-item">
-                    <span class="resumen-label">Gastos fijos/quincena</span>
-                    <span class="resumen-valor">Q1,100</span>
+                <div class="resultado-fase" id="resultado-mes4">
+                    <div class="resultado-marker">4-5</div>
+                    <div class="resultado-content">
+                        <h3>Mes 4-5</h3>
+                        <p class="resultado-perdida">-3 a -4 kg</p>
+                        <p class="resultado-peso">~81-85 kg</p>
+                    </div>
                 </div>
-                <div class="resumen-item">
-                    <span class="resumen-label">Gasto mensual extra</span>
-                    <span class="resumen-valor">Q500</span>
+                <div class="resultado-fase meta-final-resultado">
+                    <div class="resultado-marker">🎯</div>
+                    <div class="resultado-content">
+                        <h3>Meta Final</h3>
+                        <p class="resultado-perdida">Sin rebote</p>
+                        <p class="resultado-peso">77-79 kg (170-175 lb)</p>
+                    </div>
                 </div>
-                <div class="resumen-item destacado">
-                    <span class="resumen-label">Libre después de deudas</span>
-                    <span class="resumen-valor">Q2,700/mes</span>
+            </div>
+        </section>
+
+        <!-- Calorias resumen -->
+        <section class="seccion calorias-resumen">
+            <h2>Calorias Diarias</h2>
+            <div class="calorias-grid">
+                <div class="calorias-item cardio">
+                    <span class="calorias-tipo">Dias con carrera (6K)</span>
+                    <span class="calorias-cantidad">2,200 - 2,300 kcal</span>
+                    <span class="calorias-quemadas">Quemas ~580 kcal corriendo</span>
+                </div>
+                <div class="calorias-item descanso">
+                    <span class="calorias-tipo">Dias sin carrera</span>
+                    <span class="calorias-cantidad">1,900 - 2,000 kcal</span>
+                    <span class="calorias-quemadas">Deficit constante</span>
                 </div>
             </div>
         </section>
@@ -233,15 +306,42 @@
         <section class="seccion meta-final">
             <div class="meta-content">
                 <span class="meta-icono">🎯</span>
-                <h2>Meta: Libre de deudas</h2>
-                <p class="meta-fecha">15 de Enero 2026</p>
-                <p class="meta-mensaje">A partir de febrero tendrás Q2,700 libres mensuales</p>
+                <h2>Meta: 77-79 kg</h2>
+                <p class="meta-fecha">170-175 lb sin rebote</p>
+                <p class="meta-mensaje">Deficit constante, no extremo. Adaptado a tu vida real.</p>
+            </div>
+        </section>
+
+        <!-- Porque funciona -->
+        <section class="seccion porque-funciona">
+            <h2>Por que Este Plan Funciona</h2>
+            <div class="razones-grid">
+                <div class="razon-item">
+                    <span class="razon-check">✔️</span>
+                    <span>Dormis suficiente (7h)</span>
+                </div>
+                <div class="razon-item">
+                    <span class="razon-check">✔️</span>
+                    <span>No entrenas de noche</span>
+                </div>
+                <div class="razon-item">
+                    <span class="razon-check">✔️</span>
+                    <span>Cardio + Fuerza + Deporte</span>
+                </div>
+                <div class="razon-item">
+                    <span class="razon-check">✔️</span>
+                    <span>Deficit constante, no extremo</span>
+                </div>
+                <div class="razon-item">
+                    <span class="razon-check">✔️</span>
+                    <span>Adaptado a tu vida real</span>
+                </div>
             </div>
         </section>
 
         <!-- Footer -->
         <footer class="footer">
-            <p>Mantente enfocado. Cada quetzal cuenta.</p>
+            <p>Mantente enfocado. Cada dia cuenta.</p>
         </footer>
     </div>
 

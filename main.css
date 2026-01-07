@@ -15,6 +15,7 @@
     --accent-red: #ff416c;
     --accent-yellow: #f8b500;
     --accent-purple: #667eea;
+    --accent-orange: #ff6b35;
     --text-primary: #ffffff;
     --text-secondary: #a0a0b0;
     --text-muted: #6b6b80;
@@ -53,7 +54,7 @@ body {
 .header h1 {
     font-size: 1.75rem;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -65,10 +66,10 @@ body {
     font-size: 0.9rem;
 }
 
-/* Recordatorio Box */
+/* Recordatorio Box - Motivacional */
 .recordatorio-box {
-    background: linear-gradient(135deg, rgba(255, 65, 108, 0.15), rgba(255, 75, 43, 0.15));
-    border: 1px solid rgba(255, 65, 108, 0.3);
+    background: linear-gradient(135deg, rgba(0, 242, 96, 0.15), rgba(79, 172, 254, 0.15));
+    border: 1px solid rgba(0, 242, 96, 0.3);
     border-radius: 12px;
     padding: 1rem 1.25rem;
     margin-bottom: 1.5rem;
@@ -79,8 +80,8 @@ body {
 }
 
 @keyframes pulse-border {
-    0%, 100% { border-color: rgba(255, 65, 108, 0.3); }
-    50% { border-color: rgba(255, 65, 108, 0.6); }
+    0%, 100% { border-color: rgba(0, 242, 96, 0.3); }
+    50% { border-color: rgba(0, 242, 96, 0.6); }
 }
 
 .recordatorio-box .icono {
@@ -112,22 +113,22 @@ body {
     gap: 0.5rem;
 }
 
-/* Progreso General */
-.deuda-total {
+/* Progreso de Peso */
+.peso-total {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
 
-.deuda-info {
+.peso-info {
     text-align: center;
     padding: 1rem;
     background: var(--bg-card);
     border-radius: 10px;
 }
 
-.deuda-info .label {
+.peso-info .label {
     display: block;
     font-size: 0.75rem;
     color: var(--text-muted);
@@ -136,16 +137,30 @@ body {
     letter-spacing: 0.5px;
 }
 
-.deuda-info .valor {
+.peso-info .valor {
     font-size: 1.25rem;
     font-weight: 700;
 }
 
-.deuda-info.destacado .valor {
+.peso-info.destacado .valor {
     color: var(--accent-yellow);
 }
 
-.deuda-info.success .valor {
+.peso-info.success .valor {
+    color: var(--success);
+}
+
+.meta-peso {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, rgba(0, 200, 83, 0.1), rgba(0, 242, 96, 0.1));
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.meta-peso strong {
     color: var(--success);
 }
 
@@ -180,245 +195,308 @@ body {
     text-align: right;
 }
 
-/* Cards de Deudas */
-.cards-deudas {
+/* Datos Personales */
+.datos-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
-.card-deuda {
-    background: var(--bg-card);
-    border-radius: 12px;
-    padding: 1.25rem;
-    border: 1px solid var(--border-color);
-}
-
-.card-deuda.tarjeta {
-    border-left: 3px solid var(--accent-purple);
-}
-
-.card-deuda.externa {
-    border-left: 3px solid var(--accent-blue);
-}
-
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.icono-card {
-    font-size: 1.25rem;
-}
-
-.card-header h3 {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-}
-
-.card-body .monto-inicial {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-bottom: 0.25rem;
-}
-
-.card-body .monto-actual {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin-bottom: 0.75rem;
-}
-
-.barra-mini {
-    height: 6px;
-    background: var(--bg-primary);
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.barra-mini-fill {
-    height: 100%;
-    border-radius: 3px;
-    width: 100%;
-    transition: width 1s ease-out;
-}
-
-.card-deuda.tarjeta .barra-mini-fill {
-    background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
-}
-
-.card-deuda.externa .barra-mini-fill {
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
-}
-
-/* Timeline */
-.timeline {
-    position: relative;
-    padding-left: 2rem;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 0.75rem;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--border-color);
-}
-
-.fase {
-    position: relative;
-    margin-bottom: 1.5rem;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-}
-
-.fase.active {
-    opacity: 1;
-}
-
-.fase.completed {
-    opacity: 0.8;
-}
-
-.fase-marker {
-    position: absolute;
-    left: -2rem;
-    top: 0;
-    width: 1.5rem;
-    height: 1.5rem;
-    background: var(--bg-card);
-    border: 2px solid var(--border-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    font-weight: 700;
-    z-index: 1;
-}
-
-.fase.active .fase-marker {
-    background: var(--accent-blue);
-    border-color: var(--accent-blue);
-    box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
-}
-
-.fase.completed .fase-marker {
-    background: var(--success);
-    border-color: var(--success);
-}
-
-.fase.completed .fase-marker::after {
-    content: '✓';
-}
-
-.fase-content {
-    background: var(--bg-card);
-    border-radius: 10px;
-    padding: 1rem;
-    border: 1px solid var(--border-color);
-}
-
-.fase.active .fase-content {
-    border-color: var(--accent-blue);
-}
-
-.fase-header {
+.dato-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-card);
+    border-radius: 8px;
 }
 
-.fase-header h3 {
+.dato-item.destacado {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(0, 200, 83, 0.1), rgba(0, 242, 96, 0.1));
+    border: 1px solid rgba(0, 200, 83, 0.3);
+}
+
+.dato-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.dato-valor {
     font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.dato-item.destacado .dato-valor {
+    color: var(--success);
+}
+
+/* Entrenamiento de Hoy */
+.entrenamiento-card {
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-primary));
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 2px solid var(--accent-green);
+    text-align: center;
+}
+
+.entrenamiento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dia-nombre {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+}
+
+.entrenamiento-tipo {
+    background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+    color: var(--bg-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: 600;
 }
 
-.fase-fecha {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    background: var(--bg-primary);
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
+.entrenamiento-body {
+    padding: 1rem 0;
 }
 
-.fase-detalles {
+.entrenamiento-icono {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.entrenamiento-detalle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.calorias-dia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--bg-primary);
+    border-radius: 8px;
+}
+
+.calorias-label {
     font-size: 0.85rem;
     color: var(--text-secondary);
 }
 
-.fase-detalles p {
-    margin-bottom: 0.5rem;
+.calorias-valor {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-yellow);
 }
 
-.fase-detalles ul {
-    list-style: none;
-    margin: 0.5rem 0;
+.horario-entrenamiento {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
 }
 
-.fase-detalles li {
-    padding: 0.25rem 0;
-    padding-left: 1rem;
-    position: relative;
-}
-
-.fase-detalles li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
+.horario-entrenamiento strong {
     color: var(--accent-blue);
 }
 
-.fase-resultado {
+/* Plan Semanal */
+.semana-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.dia-card {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.dia-card.dia-activo {
+    border-color: var(--accent-green);
+    background: linear-gradient(135deg, rgba(0, 242, 96, 0.1), rgba(79, 172, 254, 0.1));
+    transform: scale(1.05);
+}
+
+.dia-header {
+    margin-bottom: 0.5rem;
+}
+
+.dia-numero {
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--accent-blue);
+}
+
+.dia-texto {
+    display: none;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+.dia-body {
     display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.actividad-icono {
+    font-size: 1.25rem;
+}
+
+.actividad-nombre {
+    font-size: 0.6rem;
+    color: var(--text-secondary);
+    line-height: 1.2;
+}
+
+.actividad-calorias {
+    font-size: 0.55rem;
+    color: var(--text-muted);
+}
+
+/* Horario Base */
+.horario-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.horario-item {
+    display: flex;
+    align-items: center;
     gap: 1rem;
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-    border-top: 1px dashed var(--border-color);
+    padding: 0.75rem 1rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border-left: 3px solid var(--border-color);
+}
+
+.horario-item.sueno {
+    border-left-color: var(--accent-purple);
+}
+
+.horario-item.ejercicio {
+    border-left-color: var(--accent-green);
+}
+
+.horario-item.comida {
+    border-left-color: var(--accent-orange);
+}
+
+.horario-item.trabajo {
+    border-left-color: var(--accent-blue);
+}
+
+.horario-item.preparar {
+    border-left-color: var(--accent-yellow);
+}
+
+.horario-item.despertar {
+    border-left-color: var(--accent-yellow);
+}
+
+.horario-item.iglesia {
+    border-left-color: var(--accent-purple);
+}
+
+.horario-item.banda {
+    border-left-color: var(--accent-red);
+}
+
+.horario-item.libre {
+    border-left-color: var(--success);
+}
+
+.horario-hora {
     font-size: 0.8rem;
-}
-
-.fase-resultado span {
-    background: var(--bg-primary);
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-}
-
-.fase-resultado .liquidado {
-    color: var(--success);
     font-weight: 600;
+    color: var(--text-primary);
+    min-width: 120px;
 }
 
-.fase-resultado.success-final {
-    justify-content: center;
+.horario-actividad {
+    flex: 1;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
 }
 
-.fase-resultado.success-final .liquidado {
-    background: linear-gradient(135deg, var(--success), var(--accent-green));
-    color: var(--bg-primary);
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+.horario-icono {
+    font-size: 1.25rem;
 }
 
-/* Próximo Pago */
-.proximo-pago-card {
+/* Rutina de Fuerza */
+.ejercicios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.ejercicio-item {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.ejercicio-item.rondas {
+    background: linear-gradient(135deg, rgba(0, 200, 83, 0.1), rgba(0, 242, 96, 0.1));
+    border-color: var(--success);
+}
+
+.ejercicio-icono {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.ejercicio-nombre {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.ejercicio-reps {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--accent-blue);
+    font-weight: 500;
+}
+
+/* Proximo Entrenamiento */
+.proximo-entreno-card {
     background: linear-gradient(135deg, var(--bg-card), var(--bg-primary));
     border-radius: 12px;
     padding: 1.5rem;
     text-align: center;
-    border: 1px solid var(--accent-blue);
+    border: 1px solid var(--accent-green);
 }
 
 .countdown {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 2rem;
     margin-bottom: 1rem;
 }
 
@@ -429,9 +507,9 @@ body {
 }
 
 .countdown-item .numero {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 800;
-    color: var(--accent-blue);
+    color: var(--accent-green);
     line-height: 1;
 }
 
@@ -451,51 +529,134 @@ body {
     margin-bottom: 0.25rem;
 }
 
-#proximo-fase {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+#proximo-entreno-nombre {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
-.monto-proximo {
-    font-size: 1.5rem;
+.hora-proximo {
+    font-size: 1.25rem;
     font-weight: 800;
-    color: var(--accent-yellow);
+    color: var(--accent-blue);
 }
 
-/* Resumen Grid */
-.resumen-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-}
-
-.resumen-item {
+/* Resultados Esperados */
+.resultados-timeline {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.resultados-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-color);
+}
+
+.resultado-fase {
+    position: relative;
+    display: flex;
     align-items: center;
-    padding: 0.75rem 1rem;
+    gap: 1rem;
+}
+
+.resultado-marker {
+    position: absolute;
+    left: -2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     background: var(--bg-card);
-    border-radius: 8px;
+    border: 2px solid var(--accent-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    z-index: 1;
 }
 
-.resumen-item.destacado {
-    grid-column: span 2;
-    background: linear-gradient(135deg, rgba(0, 200, 83, 0.1), rgba(0, 242, 96, 0.1));
-    border: 1px solid rgba(0, 200, 83, 0.3);
+.resultado-fase.meta-final-resultado .resultado-marker {
+    background: var(--success);
+    border-color: var(--success);
+    font-size: 0.8rem;
 }
 
-.resumen-label {
+.resultado-content {
+    flex: 1;
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.resultado-content h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.resultado-perdida {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-green);
+}
+
+.resultado-peso {
     font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
-.resumen-valor {
-    font-size: 0.95rem;
-    font-weight: 700;
+/* Calorias Resumen */
+.calorias-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
 }
 
-.resumen-item.destacado .resumen-valor {
-    color: var(--success);
+.calorias-item {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.calorias-item.cardio {
+    border-left: 3px solid var(--accent-green);
+}
+
+.calorias-item.descanso {
+    border-left: 3px solid var(--accent-blue);
+}
+
+.calorias-tipo {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.calorias-cantidad {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--accent-yellow);
+    margin-bottom: 0.25rem;
+}
+
+.calorias-quemadas {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
 }
 
 /* Meta Final */
@@ -543,6 +704,28 @@ body {
     max-width: 300px;
 }
 
+/* Porque Funciona */
+.razones-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.razon-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.razon-check {
+    font-size: 1rem;
+}
+
 /* Footer */
 .footer {
     text-align: center;
@@ -562,42 +745,54 @@ body {
         font-size: 1.5rem;
     }
 
-    .deuda-total {
+    .peso-total {
         grid-template-columns: 1fr;
         gap: 0.75rem;
     }
 
-    .deuda-info {
+    .peso-info {
         display: flex;
         justify-content: space-between;
         align-items: center;
         text-align: left;
     }
 
-    .deuda-info .label {
+    .peso-info .label {
         margin-bottom: 0;
     }
 
-    .cards-deudas {
+    .datos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dato-item.destacado {
+        grid-column: span 1;
+    }
+
+    .semana-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .dia-card:nth-child(5),
+    .dia-card:nth-child(6),
+    .dia-card:nth-child(7) {
+        grid-column: span 1;
+    }
+
+    .ejercicios-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .calorias-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .razones-grid {
         grid-template-columns: 1fr;
     }
 
     .countdown-item .numero {
-        font-size: 1.5rem;
-    }
-
-    .resumen-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .resumen-item.destacado {
-        grid-column: span 1;
-    }
-
-    .fase-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
+        font-size: 2rem;
     }
 }
 
@@ -623,43 +818,11 @@ body {
 .seccion:nth-child(5) { animation-delay: 0.4s; }
 .seccion:nth-child(6) { animation-delay: 0.5s; }
 .seccion:nth-child(7) { animation-delay: 0.6s; }
-
-/* Estado completado para tarjetas */
-.card-deuda.liquidada {
-    opacity: 0.7;
-    position: relative;
-}
-
-.card-deuda.liquidada::after {
-    content: 'LIQUIDADA';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-15deg);
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--success);
-    background: rgba(0, 200, 83, 0.1);
-    padding: 0.25rem 1rem;
-    border: 2px solid var(--success);
-    border-radius: 4px;
-}
-
-/* Parpadeo para próximos pagos urgentes */
-.proximo-pago-card.urgente {
-    animation: urgentPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes urgentPulse {
-    0%, 100% {
-        border-color: var(--accent-blue);
-        box-shadow: 0 0 0 rgba(79, 172, 254, 0);
-    }
-    50% {
-        border-color: var(--accent-yellow);
-        box-shadow: 0 0 20px rgba(248, 181, 0, 0.3);
-    }
-}
+.seccion:nth-child(8) { animation-delay: 0.7s; }
+.seccion:nth-child(9) { animation-delay: 0.8s; }
+.seccion:nth-child(10) { animation-delay: 0.9s; }
+.seccion:nth-child(11) { animation-delay: 1s; }
+.seccion:nth-child(12) { animation-delay: 1.1s; }
 
 /* Scrollbar personalizado */
 ::-webkit-scrollbar {
@@ -677,4 +840,18 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-muted);
+}
+
+/* Dia activo animacion */
+.dia-card.dia-activo {
+    animation: pulseActive 2s ease-in-out infinite;
+}
+
+@keyframes pulseActive {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 242, 96, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 15px 5px rgba(0, 242, 96, 0.2);
+    }
 }
